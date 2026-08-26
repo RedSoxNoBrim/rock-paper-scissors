@@ -25,8 +25,8 @@ function getComputerChoice() {
 getComputerChoice();
 
 function getHumanChoice() {
-    answer = prompt("Choose rock, paper, or scissors. ")
-    answer.toLowerCase();
+    let answer = prompt("Choose rock, paper, or scissors. ")
+    answer = answer.toLowerCase();
     console.log(answer)
     return answer;
 }
@@ -76,7 +76,13 @@ function playGame() {
         console.log("Human score:", humanScore)
         console.log("Computer score:", computerScore)
     }
-
+       if (humanScore > computerScore) {
+        alert("You Win!");
+       } else if (humanScore < computerScore) {
+        alert("You lose!");
+       } else {
+        alert("It's a tie!");
+       }
     
 
 
