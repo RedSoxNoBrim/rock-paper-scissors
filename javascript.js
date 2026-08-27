@@ -12,17 +12,17 @@ function getComputerChoice() {
     let answer = getRandomInt(3);
     if (answer === 0) {
         console.log("Rock")
-        return "Rock";
+        return "rock";
     } else if (answer === 1) {
         console.log("Paper")
-        return "Paper";
+        return "paper";
     } else {
         console.log("Scissors")
-        return "Scissors";
+        return "scissors";
     }
 }
 
-getComputerChoice();
+
 
 function getHumanChoice() {
     let answer = prompt("Choose rock, paper, or scissors. ")
@@ -34,27 +34,32 @@ function getHumanChoice() {
 
 
 
-function playRound(humanChoice, computerChoice) {
+function determineWinner(humanChoice, computerChoice) {
 
-    if (humanChoice === "rock" && computerChoice === "Paper") {
-        return "You lose!";
-    } else if (humanChoice === "paper" && computerChoice === "Scissors") {
-        return "You lose!";
-    } else if (humanChoice === "scissors" && computerChoice === "Rock") {
-        return "You lose!";
-    } else if (humanChoice === "rock" && computerChoice === "Scissors") {
-        return "You win!";
-    } else if (humanChoice === "paper" && computerChoice === "Rock") {
-        return "You win!";
-    } else if (humanChoice === "scissors" && computerChoice === "Paper") {
-        return "You win!";
-    } else if (humanChoice === "rock" && computerChoice === "Rock") {
-        return "It's a tie!";
-    } else if (humanChoice === "paper" && computerChoice === "Paper") {
-        return "It's a tie!";
-    } else if (humanChoice === "scissors" && computerChoice === "Scissors") {
-        return "It's a tie!";
+    const choices = ["rock", "paper", "scissors"];
+    const winningchoices = [2, 0, 1];
+
+    let humanIndex = choices.indexOf(humanChoice);
+    let computerIndex = choices.indexOf(computerChoice);
+
+    if (humanIndex === computerIndex) {
+        console.log("It's a tie!")
+        return "It's a tie!"; 
     }
+
+    
+
+    const winningchoice = winningchoices[humanIndex]
+
+    if (computerIndex === winningchoice) {
+        console.log("You win!")
+        return "You win!"
+    }
+
+    console.log("You lose!")
+    return "You lose!";
+
+    
 }
 
 
@@ -63,7 +68,7 @@ function playRound(humanChoice, computerChoice) {
 
 function playGame() {
     for (let i = 0; i < 5; i++) {
-        let result = playRound(getHumanChoice(), getComputerChoice());
+        let result = determineWinner(getHumanChoice(), getComputerChoice());
 
         
 
@@ -89,4 +94,3 @@ function playGame() {
 }
 
 playGame();
-
